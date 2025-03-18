@@ -122,10 +122,13 @@ else:
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        response = openai.ChatCompletion.create(
+        client = openai.OpenAI()  # Создаем клиента OpenAI
+        
+        response = client.chat.completions.create(
             model="gpt-4",
             messages=st.session_state.messages
         )
+        
         reply = response["choices"][0]["message"]["content"]
         st.session_state.messages.append({"role": "assistant", "content": reply})
         log_event("BOT_REPLY", f"Бот ответил: {reply}")
