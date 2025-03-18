@@ -119,7 +119,7 @@ elif st.session_state.restricted_mode:
             st.markdown(selected_message)
 
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo",
             messages=st.session_state.messages
         )
         reply = response.choices[0].message.content
@@ -145,7 +145,7 @@ else:
             st.markdown(prompt)
 
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo",
             messages=st.session_state.messages
         )
         reply = response.choices[0].message.content
